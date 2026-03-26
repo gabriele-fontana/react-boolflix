@@ -42,9 +42,9 @@ function App() {
     const starsNumb = Math.ceil(vote/2)
     for (let index = 1; index <= 5; index++) {
       if (index <= starsNumb){
-        stars.push(<i className="bi bi-star-fill text-warning"></i>)
+        stars.push(<i key={Math.random()} className="bi bi-star-fill text-warning"></i>)
       }else{
-        stars.push(<i  className="bi bi-star text-muted"></i>);
+        stars.push(<i key={Math.random()} className="bi bi-star text-muted"></i>);
       }
       
     }
