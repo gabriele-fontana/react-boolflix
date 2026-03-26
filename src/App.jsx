@@ -1,19 +1,20 @@
-import { useState } from "react";
-import ReactCountryFlag from "react-country-flag";
+import { useGlobalContext } from "./context/GlobalContext";
+import AppNavbar from "./components/AppNavbar";
+import MovieCard from "./components/MovieCard";
+import TvSerieCard from "./components/TvSerieCard";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function App() {
-  
-  const [title, setTitle] = useState('')
+  const { movies, tvSeries } = useGlobalContext();
+  /* const [title, setTitle] = useState('')
   const [movies, setMovies] = useState([])
   const [tvSeries, setTvSeries] = useState([])
   const api_key = import.meta.env.VITE_API_KEY
   const img_url = 'https://image.tmdb.org/t/p/w342'
+   */
   
-  
-  function handleSubmit(e){
+  /* function handleSubmit(e){
 
     e.preventDefault()
 
@@ -36,8 +37,9 @@ function App() {
     .then(data => {
       setTvSeries(data.results)
     })
-  }
-  function renderStars(vote){
+  } */
+
+  /* function renderStars(vote){
     const stars = []
     const starsNumb = Math.ceil(vote/2)
     for (let index = 1; index <= 5; index++) {
@@ -50,16 +52,16 @@ function App() {
     }
     return stars
 
-  }
+  } */
   
   return (
    <>
-    <form onSubmit={handleSubmit}>
+    {/* <form onSubmit={handleSubmit}>
       <input type="text" value={title} onChange={(e) => {setTitle(e.target.value)}}/>
       <button>Search</button>
-    </form>
+    </form> */}
 
-    <div className="movie-list">
+    {/* <div className="movie-list">
       {movies.length > 0 ? (
         movies.map((movie) => (
           <div key={movie.id}>
@@ -91,8 +93,10 @@ function App() {
       ) : (
         <p>Nessun film cercato o trovato.</p>
       )}
-    </div>
-    <div className="tvSerie-list">
+    </div> */}
+
+
+    {/* <div className="tvSerie-list">
       {tvSeries.length > 0 ? (
         tvSeries.map((tvSerie) => (
           <div key={tvSerie.id}>
@@ -124,10 +128,35 @@ function App() {
       ) : (
         <p>Nessuna serie cercata o trovata.</p>
       )}
-    </div>
+    </div> */}
 
+    <div className="min-vh-100 bg-dark text-white">
+      <AppNavbar />
+      <main className="container py-5">
+
+        {movies.length > 0 && (
+          <section className="mb-5">
+            <h2 className="mb-4 border-start border-danger border-4 ps-2">Film</h2>
+            <div className="row">
+              {movies.map(movie => <MovieCard key={movie.id} item={movie} type="Film" />)}
+            </div>
+          </section>
+        )}
+
+        {tvSeries.length > 0 && (
+          <section>
+            <h2 className="mb-4 border-start border-danger border-4 ps-2">Serie TV</h2>
+            <div className="row">
+              {tvSeries.map(tv => <TvSerieCard key={tv.id} item={tv} type="Serie TV" />)}
+            </div>
+          </section>
+        )}
+
+      </main>
+    </div>
    </>
   )
 }
 
 export default App
+
