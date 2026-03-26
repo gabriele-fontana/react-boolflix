@@ -1,11 +1,8 @@
-import { useContext } from "react"
 import { useGlobalContext } from "../context/GlobalContext"
 
 export default function AppNavbar(){
 
     const {title, setTitle, handleSubmit } = useGlobalContext()
-
-
 
     return(
         <nav className="navbar navbar-dark bg-black ">

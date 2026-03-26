@@ -5,7 +5,6 @@ import placeHolderImg from "../assets/generic_movie.png"
 export default function TvSerieCard({ item }) {
     const { renderStars, img_url } = useGlobalContext();
     
-
     return (
         <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
             <div className="card h-100 bg-black text-white border-0 movie-card position-relative overflow-hidden shadow">

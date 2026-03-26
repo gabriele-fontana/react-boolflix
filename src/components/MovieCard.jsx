@@ -5,18 +5,15 @@ export default function MovieCard({ item }) {
    
     const { renderStars, img_url } = useGlobalContext();
     
-
     return (
         <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
             <div className="card h-100 bg-black text-white border-0 movie-card position-relative overflow-hidden shadow">
-
                 
                 <img
                     src={item.poster_path ? `${img_url}${item.poster_path}` : placeHolderImg}
                     className="card-img h-100 object-fit-cover"
                     alt={item.name}
-                />
-                
+                />                
                 <div className="card-info-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-start p-3 text-center bg-dark bg-opacity-75">
                     <h5 className="fw-bold">{item.title}</h5>
                     <p className="small text-secondary mb-1">{item.original_title}</p>
@@ -26,8 +23,7 @@ export default function MovieCard({ item }) {
                             item.original_language === 'ja' ? 'JP' :
                             item.original_language === 'he' ? 'IL' :
                             item.original_language === 'zh' ? 'CN' :
-                            item.original_language.toUpperCase()
-                            
+                            item.original_language.toUpperCase()                           
                         }
                         svg/>
                     </div>
