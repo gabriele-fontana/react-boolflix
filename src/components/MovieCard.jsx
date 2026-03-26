@@ -17,7 +17,7 @@ export default function MovieCard({ item }) {
                     alt={item.name}
                 />
                 
-                <div className="card-info-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center p-3 text-center bg-dark bg-opacity-75 opacity-0">
+                <div className="card-info-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center p-3 text-center bg-dark">
                     <h5 className="fw-bold">{item.title}</h5>
                     <p className="small text-secondary mb-1">{item.original_title}</p>
                     <div className="mb-2">
