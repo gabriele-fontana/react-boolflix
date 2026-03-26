@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactCountryFlag from "react-country-flag";
 
 function App() {
   
@@ -30,20 +31,31 @@ function App() {
       <input type="text" value={title} onChange={(e) => {setTitle(e.target.value)}}/>
       <button>Search</button>
     </form>
-      <div className="movie-list">
-        {movies.length > 0 ? (
-          movies.map((movie) => (
-            <div key={movie.id}>
-              <h2>{movie.title}</h2>
-              <p><strong>Titolo Originale:</strong> {movie.original_title}</p>
-              <p><strong>Lingua:</strong> {movie.original_language.toUpperCase()}</p>
-              <p><strong>Voto:</strong> {movie.vote_average.toFixed(1)} / 10</p>
-            </div>
-          ))
-        ) : (
-          <p>Nessun film cercato o trovato.</p>
-        )}
-      </div>
+
+    <div className="movie-list">
+      {movies.length > 0 ? (
+        movies.map((movie) => (
+          <div key={movie.id}>
+            <h2>{movie.title}</h2>
+            <p><strong>Titolo Originale:</strong> {movie.original_title}</p>
+            <p><strong>Lingua:</strong> <ReactCountryFlag
+              countryCode={
+                movie.original_language === 'en' ? 'GB' :
+                movie.original_language === 'ja' ? 'JP' :
+                movie.original_language === 'he' ? 'IL' :
+                movie.original_language === 'zh' ? 'CN' :
+                movie.original_language.toUpperCase()
+              }
+              svg
+              style={{ marginLeft: '10px', width: '2em', height: '1.5em' }}
+            /></p>
+            <p><strong>Voto:</strong> {movie.vote_average.toFixed(1)} / 10</p>
+          </div>
+        ))
+      ) : (
+        <p>Nessun film cercato o trovato.</p>
+      )}
+    </div>
 
    </>
   )
