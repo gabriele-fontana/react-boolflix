@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     const movies_url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${title}`
     const tv_url = `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${title}`
 
+    
     fetch(movies_url)
     .then(res => res.json())
     .then((data) => {
@@ -28,12 +30,26 @@ function App() {
       
       
     })
-
+    
     fetch(tv_url)
     .then(res => res.json())
     .then(data => {
       setTvSeries(data.results)
     })
+  }
+  function renderStars(vote){
+    const stars = []
+    const starsNumb = Math.ceil(vote/2)
+    for (let index = 1; index <= 5; index++) {
+      if (index <= starsNumb){
+        stars.push(<i className="bi bi-star-fill text-warning"></i>)
+      }else{
+        stars.push(<i  className="bi bi-star text-muted"></i>);
+      }
+      
+    }
+    return stars
+
   }
   
   return (
@@ -69,7 +85,7 @@ function App() {
                  ({movie.original_language.toUpperCase()})
               </span>
             </p>
-            <p><strong>Voto:</strong> {movie.vote_average.toFixed(1)} / 10</p>
+            <p><strong>Voto:</strong> {renderStars(movie.vote_average)}</p>
           </div>
         ))
       ) : (
@@ -102,7 +118,7 @@ function App() {
                 ({tvSerie.original_language.toUpperCase()})
               </span>
             </p>
-            <p><strong>Voto:</strong> {tvSerie.vote_average.toFixed(1)} / 10</p>
+            <p><strong>Voto:</strong> {renderStars(tvSerie.vote_average)}</p>
           </div>
         ))
       ) : (
