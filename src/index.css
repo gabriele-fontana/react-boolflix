@@ -1,9 +1,9 @@
 .card-info-overlay{
 
     opacity: 0;
+    overflow-y: auto;
 
 }
-.card .card-info-overlay:hover{
-
+.movie-card:hover .card-info-overlay {
     opacity: 1;
 }
