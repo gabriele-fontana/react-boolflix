@@ -46,6 +46,7 @@ function App() {
           <div key={movie.id}>
             <h2>{movie.title}</h2>
             <p><strong>Titolo Originale:</strong> {movie.original_title}</p>
+            <p><strong>Tipo: </strong> Film</p>
             <p><strong>Lingua:</strong> 
               <ReactCountryFlag  countryCode={
                 movie.original_language === 'en' ? 'GB' :
@@ -76,6 +77,7 @@ function App() {
           <div key={tvSerie.id}>
             <h2>{tvSerie.name}</h2>
             <p><strong>Titolo Originale:</strong> {tvSerie.original_name}</p>
+            <p><strong>Tipo: </strong> Serie Tv</p>
             <p><strong>Lingua:</strong>
               <ReactCountryFlag countryCode={
                 tvSerie.original_language === 'en' ? 'GB' :
