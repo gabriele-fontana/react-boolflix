@@ -1,5 +1,7 @@
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 function App() {
   
@@ -7,8 +9,9 @@ function App() {
   const [movies, setMovies] = useState([])
   const [tvSeries, setTvSeries] = useState([])
   const api_key = import.meta.env.VITE_API_KEY
+  const img_url = 'https://image.tmdb.org/t/p/w342'
   
-
+  
   function handleSubmit(e){
 
     e.preventDefault()
@@ -44,6 +47,8 @@ function App() {
       {movies.length > 0 ? (
         movies.map((movie) => (
           <div key={movie.id}>
+            {movie.poster_path &&(
+              <img src={`${img_url}${movie.poster_path}`} alt="movie.original_title" />)}
             <h2>{movie.title}</h2>
             <p><strong>Titolo Originale:</strong> {movie.original_title}</p>
             <p><strong>Tipo: </strong> Film</p>
@@ -76,6 +81,8 @@ function App() {
         tvSeries.map((tvSerie) => (
           <div key={tvSerie.id}>
             <h2>{tvSerie.name}</h2>
+            {tvSerie.poster_path && (
+              <img src={`${img_url}${tvSerie.poster_path}`} alt="movie.original_name" />)}
             <p><strong>Titolo Originale:</strong> {tvSerie.original_name}</p>
             <p><strong>Tipo: </strong> Serie Tv</p>
             <p><strong>Lingua:</strong>
