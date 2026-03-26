@@ -47,7 +47,10 @@ function App() {
                 movie.original_language.toUpperCase()
               }
                 svg
-                style={{ marginLeft: '10px', width: '2em', height: '1.5em' }}/>
+                style={{ marginLeft: '10px', width: '2em', height: '1.5em' }}
+                onError={(e) => {
+                  e.target.style.display = 'none'; 
+                }}/>
               <span>
                  ({movie.original_language.toUpperCase()})
               </span>
