@@ -38,17 +38,20 @@ function App() {
           <div key={movie.id}>
             <h2>{movie.title}</h2>
             <p><strong>Titolo Originale:</strong> {movie.original_title}</p>
-            <p><strong>Lingua:</strong> <ReactCountryFlag
-              countryCode={
+            <p><strong>Lingua:</strong> 
+              <ReactCountryFlag  countryCode={
                 movie.original_language === 'en' ? 'GB' :
                 movie.original_language === 'ja' ? 'JP' :
                 movie.original_language === 'he' ? 'IL' :
                 movie.original_language === 'zh' ? 'CN' :
                 movie.original_language.toUpperCase()
               }
-              svg
-              style={{ marginLeft: '10px', width: '2em', height: '1.5em' }}
-            /></p>
+                svg
+                style={{ marginLeft: '10px', width: '2em', height: '1.5em' }}/>
+              <span>
+                 ({movie.original_language.toUpperCase()})
+              </span>
+            </p>
             <p><strong>Voto:</strong> {movie.vote_average.toFixed(1)} / 10</p>
           </div>
         ))
